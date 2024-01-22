@@ -1,174 +1,211 @@
 package aepapi
 
 import (
-    "apis/core"
-    "net/http"
+	aepsdkcore "ctwing-aep-sdk/core"
+	"net/http"
 )
 
+// 参数MasterKey: 类型String, 参数可以为空
+//
+//	描述:
+//
+// 参数body: 类型json, 参数不可以为空
+//
+//	描述:body,具体参考平台api说明
+func CreateDeviceGroup(appKey string, appSecret string, body string, MasterKey string) (*http.Response, error) {
+	path := "/aep_device_group_management/deviceGroup"
 
-//参数MasterKey: 类型String, 参数可以为空
-//  描述:
-//参数body: 类型json, 参数不可以为空
-//  描述:body,具体参考平台api说明
-func CreateDeviceGroup(appKey string, appSecret string, body string, MasterKey string ) (*http.Response, error) {
-    path := "/aep_device_group_management/deviceGroup"
-    
-    var headers map[string]string = make(map[string]string)
-    headers["MasterKey"] = MasterKey
+	var headers map[string]string = make(map[string]string)
+	headers["MasterKey"] = MasterKey
 
-    var param map[string]string = nil
-    version := "20190615001622"
+	var param map[string]string = nil
+	version := "20190615001622"
 
-    application := appKey
-    key := appSecret
+	application := appKey
+	key := appSecret
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, body, version, application, key, "POST")
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, body, version, application, key, "POST")
 }
 
-//参数MasterKey: 类型String, 参数可以为空
-//  描述:
-//参数body: 类型json, 参数不可以为空
-//  描述:body,具体参考平台api说明
-func UpdateDeviceGroup(appKey string, appSecret string, body string, MasterKey string ) (*http.Response, error) {
-    path := "/aep_device_group_management/deviceGroup"
-    
-    var headers map[string]string = make(map[string]string)
-    headers["MasterKey"] = MasterKey
+// 参数MasterKey: 类型String, 参数可以为空
+//
+//	描述:
+//
+// 参数body: 类型json, 参数不可以为空
+//
+//	描述:body,具体参考平台api说明
+func UpdateDeviceGroup(appKey string, appSecret string, body string, MasterKey string) (*http.Response, error) {
+	path := "/aep_device_group_management/deviceGroup"
 
-    var param map[string]string = nil
-    version := "20190615001615"
+	var headers map[string]string = make(map[string]string)
+	headers["MasterKey"] = MasterKey
 
-    application := appKey
-    key := appSecret
+	var param map[string]string = nil
+	version := "20190615001615"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, body, version, application, key, "PUT")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, body, version, application, key, "PUT")
 }
 
-//参数productId: 类型long, 参数可以为空
-//  描述:产品Id，单产品分组必填
-//参数deviceGroupId: 类型long, 参数不可以为空
-//  描述:分组Id
-//参数MasterKey: 类型String, 参数可以为空
-//  描述:
-func DeleteDeviceGroup(appKey string, appSecret string, deviceGroupId string , productId string , MasterKey string ) (*http.Response, error) {
-    path := "/aep_device_group_management/deviceGroup"
-    
-    var headers map[string]string = make(map[string]string)
-    headers["MasterKey"] = MasterKey
+// 参数productId: 类型long, 参数可以为空
+//
+//	描述:产品Id，单产品分组必填
+//
+// 参数deviceGroupId: 类型long, 参数不可以为空
+//
+//	描述:分组Id
+//
+// 参数MasterKey: 类型String, 参数可以为空
+//
+//	描述:
+func DeleteDeviceGroup(appKey string, appSecret string, deviceGroupId string, productId string, MasterKey string) (*http.Response, error) {
+	path := "/aep_device_group_management/deviceGroup"
 
-    var param map[string]string = make(map[string]string)
-    param["productId"] = productId
-    param["deviceGroupId"] = deviceGroupId
+	var headers map[string]string = make(map[string]string)
+	headers["MasterKey"] = MasterKey
 
-    version := "20190615001601"
+	var param map[string]string = make(map[string]string)
+	param["productId"] = productId
+	param["deviceGroupId"] = deviceGroupId
 
-    application := appKey
-    key := appSecret
+	version := "20190615001601"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "DELETE")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "DELETE")
 }
 
-//参数pageNow: 类型long, 参数不可以为空
-//  描述:当前页数
-//参数pageSize: 类型long, 参数不可以为空
-//  描述:每页记录数
-//参数productId: 类型long, 参数可以为空
-//  描述:支持通过产品id查询单产品分组列表
-//参数deviceGroupId: 类型long, 参数可以为空
-//  描述:支持通过分组ID查询
-//参数deviceGroupName: 类型String, 参数可以为空
-//  描述:支持通过分组名称查询
-//参数groupLevel: 类型long, 参数可以为空
-//  描述:支持通过分组类别查询，0为单产品分组，1为多产品分组
-func QueryDeviceGroupList(appKey string, appSecret string, pageNow string , pageSize string , productId string , deviceGroupId string , deviceGroupName string , groupLevel string ) (*http.Response, error) {
-    path := "/aep_device_group_management/deviceGroups"
-    
-    var headers map[string]string = nil
-    var param map[string]string = make(map[string]string)
-    param["pageNow"] = pageNow
-    param["pageSize"] = pageSize
-    param["productId"] = productId
-    param["deviceGroupId"] = deviceGroupId
-    param["deviceGroupName"] = deviceGroupName
-    param["groupLevel"] = groupLevel
+// 参数pageNow: 类型long, 参数不可以为空
+//
+//	描述:当前页数
+//
+// 参数pageSize: 类型long, 参数不可以为空
+//
+//	描述:每页记录数
+//
+// 参数productId: 类型long, 参数可以为空
+//
+//	描述:支持通过产品id查询单产品分组列表
+//
+// 参数deviceGroupId: 类型long, 参数可以为空
+//
+//	描述:支持通过分组ID查询
+//
+// 参数deviceGroupName: 类型String, 参数可以为空
+//
+//	描述:支持通过分组名称查询
+//
+// 参数groupLevel: 类型long, 参数可以为空
+//
+//	描述:支持通过分组类别查询，0为单产品分组，1为多产品分组
+func QueryDeviceGroupList(appKey string, appSecret string, pageNow string, pageSize string, productId string, deviceGroupId string, deviceGroupName string, groupLevel string) (*http.Response, error) {
+	path := "/aep_device_group_management/deviceGroups"
 
-    version := "20230218035819"
+	var headers map[string]string = nil
+	var param map[string]string = make(map[string]string)
+	param["pageNow"] = pageNow
+	param["pageSize"] = pageSize
+	param["productId"] = productId
+	param["deviceGroupId"] = deviceGroupId
+	param["deviceGroupName"] = deviceGroupName
+	param["groupLevel"] = groupLevel
 
-    application := appKey
-    key := appSecret
+	version := "20230218035819"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
 }
 
-//参数MasterKey: 类型String, 参数可以为空
-//  描述:
-//参数productId: 类型long, 参数可以为空
-//  描述:产品ID，查询单产品分组下已关联的设备列表或产品下未关联的设备列表时必填
-//参数searchValue: 类型String, 参数可以为空
-//  描述:可查询：设备ID，设备名称，设备编号或者IMEI号；仅支持单产品分组查询
-//参数pageNow: 类型long, 参数不可以为空
-//  描述:当前页数
-//参数pageSize: 类型long, 参数不可以为空
-//  描述:每页条数
-//参数deviceGroupId: 类型long, 参数可以为空
-//  描述:群组ID：1.有值则查询该群组已关联的设备信息列表。2.为空则查询该产品下未关联的设备信息列表
-func QueryGroupDeviceList(appKey string, appSecret string, pageNow string , pageSize string , MasterKey string , productId string , searchValue string , deviceGroupId string ) (*http.Response, error) {
-    path := "/aep_device_group_management/groupDeviceList"
-    
-    var headers map[string]string = make(map[string]string)
-    headers["MasterKey"] = MasterKey
+// 参数MasterKey: 类型String, 参数可以为空
+//
+//	描述:
+//
+// 参数productId: 类型long, 参数可以为空
+//
+//	描述:产品ID，查询单产品分组下已关联的设备列表或产品下未关联的设备列表时必填
+//
+// 参数searchValue: 类型String, 参数可以为空
+//
+//	描述:可查询：设备ID，设备名称，设备编号或者IMEI号；仅支持单产品分组查询
+//
+// 参数pageNow: 类型long, 参数不可以为空
+//
+//	描述:当前页数
+//
+// 参数pageSize: 类型long, 参数不可以为空
+//
+//	描述:每页条数
+//
+// 参数deviceGroupId: 类型long, 参数可以为空
+//
+//	描述:群组ID：1.有值则查询该群组已关联的设备信息列表。2.为空则查询该产品下未关联的设备信息列表
+func QueryGroupDeviceList(appKey string, appSecret string, pageNow string, pageSize string, MasterKey string, productId string, searchValue string, deviceGroupId string) (*http.Response, error) {
+	path := "/aep_device_group_management/groupDeviceList"
 
-    var param map[string]string = make(map[string]string)
-    param["productId"] = productId
-    param["searchValue"] = searchValue
-    param["pageNow"] = pageNow
-    param["pageSize"] = pageSize
-    param["deviceGroupId"] = deviceGroupId
+	var headers map[string]string = make(map[string]string)
+	headers["MasterKey"] = MasterKey
 
-    version := "20190615001540"
+	var param map[string]string = make(map[string]string)
+	param["productId"] = productId
+	param["searchValue"] = searchValue
+	param["pageNow"] = pageNow
+	param["pageSize"] = pageSize
+	param["deviceGroupId"] = deviceGroupId
 
-    application := appKey
-    key := appSecret
+	version := "20190615001540"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
 }
 
-//参数MasterKey: 类型String, 参数可以为空
-//  描述:
-//参数body: 类型json, 参数不可以为空
-//  描述:body,具体参考平台api说明
-func UpdateDeviceGroupRelation(appKey string, appSecret string, body string, MasterKey string ) (*http.Response, error) {
-    path := "/aep_device_group_management/deviceGroupRelation"
-    
-    var headers map[string]string = make(map[string]string)
-    headers["MasterKey"] = MasterKey
+// 参数MasterKey: 类型String, 参数可以为空
+//
+//	描述:
+//
+// 参数body: 类型json, 参数不可以为空
+//
+//	描述:body,具体参考平台api说明
+func UpdateDeviceGroupRelation(appKey string, appSecret string, body string, MasterKey string) (*http.Response, error) {
+	path := "/aep_device_group_management/deviceGroupRelation"
 
-    var param map[string]string = nil
-    version := "20190615001526"
+	var headers map[string]string = make(map[string]string)
+	headers["MasterKey"] = MasterKey
 
-    application := appKey
-    key := appSecret
+	var param map[string]string = nil
+	version := "20190615001526"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, body, version, application, key, "PUT")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, body, version, application, key, "PUT")
 }
 
-//参数productId: 类型long, 参数不可以为空
-//  描述:
-//参数deviceId: 类型String, 参数不可以为空
-//  描述:
-func GetGroupDetailByDeviceId(appKey string, appSecret string, productId string , deviceId string ) (*http.Response, error) {
-    path := "/aep_device_group_management/groupOfDeviceId"
-    
-    var headers map[string]string = nil
-    var param map[string]string = make(map[string]string)
-    param["productId"] = productId
-    param["deviceId"] = deviceId
+// 参数productId: 类型long, 参数不可以为空
+//
+//	描述:
+//
+// 参数deviceId: 类型String, 参数不可以为空
+//
+//	描述:
+func GetGroupDetailByDeviceId(appKey string, appSecret string, productId string, deviceId string) (*http.Response, error) {
+	path := "/aep_device_group_management/groupOfDeviceId"
 
-    version := "20211014095939"
+	var headers map[string]string = nil
+	var param map[string]string = make(map[string]string)
+	param["productId"] = productId
+	param["deviceId"] = deviceId
 
-    application := appKey
-    key := appSecret
+	version := "20211014095939"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
 }
-

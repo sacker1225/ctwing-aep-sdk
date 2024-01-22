@@ -1,54 +1,55 @@
 package aepapi
 
 import (
-    "apis/core"
-    "net/http"
+	aepsdkcore "ctwing-aep-sdk/core"
+	"net/http"
 )
 
-
 func QueryTenantDeviceCount(appKey string, appSecret string) (*http.Response, error) {
-    path := "/tenant_device_statistics/queryTenantDeviceCount"
-    
-    var headers map[string]string = nil
-    var param map[string]string = nil
-    version := "20201225122555"
+	path := "/tenant_device_statistics/queryTenantDeviceCount"
 
-    application := appKey
-    key := appSecret
+	var headers map[string]string = nil
+	var param map[string]string = nil
+	version := "20201225122555"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
 }
 
-//参数dateType: 类型String, 参数不可以为空
-//  描述:时间类型：d:天；m:月
-//参数type1: 类型String, 参数不可以为空
-//  描述:数据类型：1：设备总数量，激活数，活跃数；3：设备活跃数，活跃率
-func QueryTenantDeviceTrend(appKey string, appSecret string, dateType string , type1 string ) (*http.Response, error) {
-    path := "/tenant_device_statistics/queryTenantDeviceTrend"
-    
-    var headers map[string]string = nil
-    var param map[string]string = make(map[string]string)
-    param["dateType"] = dateType
-    param["type1"] = type1
+// 参数dateType: 类型String, 参数不可以为空
+//
+//	描述:时间类型：d:天；m:月
+//
+// 参数type1: 类型String, 参数不可以为空
+//
+//	描述:数据类型：1：设备总数量，激活数，活跃数；3：设备活跃数，活跃率
+func QueryTenantDeviceTrend(appKey string, appSecret string, dateType string, type1 string) (*http.Response, error) {
+	path := "/tenant_device_statistics/queryTenantDeviceTrend"
 
-    version := "20201225122550"
+	var headers map[string]string = nil
+	var param map[string]string = make(map[string]string)
+	param["dateType"] = dateType
+	param["type1"] = type1
 
-    application := appKey
-    key := appSecret
+	version := "20201225122550"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
 }
 
 func QueryTenantDeviceActiveCount(appKey string, appSecret string) (*http.Response, error) {
-    path := "/tenant_device_statistics/queryTenantDeviceActiveCount"
-    
-    var headers map[string]string = nil
-    var param map[string]string = nil
-    version := "20201225122558"
+	path := "/tenant_device_statistics/queryTenantDeviceActiveCount"
 
-    application := appKey
-    key := appSecret
+	var headers map[string]string = nil
+	var param map[string]string = nil
+	version := "20201225122558"
 
-    return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
+	application := appKey
+	key := appSecret
+
+	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "GET")
 }
-
