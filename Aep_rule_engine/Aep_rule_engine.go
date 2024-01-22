@@ -1,7 +1,7 @@
 package aepapi
 
 import (
-	aepsdkcore "ctwing-aep-sdk/core"
+	aepsdkcore "github.com/sacker1225/ctwing-aep-sdk/core"
 	"net/http"
 )
 
