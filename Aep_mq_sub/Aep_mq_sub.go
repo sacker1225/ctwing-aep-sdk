@@ -98,16 +98,3 @@ func QuerySubRules(appKey string, appSecret string, body string) (*http.Response
 
 	return aepsdkcore.SendAepHttpRequest(path, headers, param, body, version, application, key, "POST")
 }
-
-func ClosePushService(appKey string, appSecret string) (*http.Response, error) {
-	path := "/aep_mq_sub/mqStat"
-
-	var headers map[string]string = nil
-	var param map[string]string = nil
-	version := "20201217141937"
-
-	application := appKey
-	key := appSecret
-
-	return aepsdkcore.SendAepHttpRequest(path, headers, param, "", version, application, key, "DELETE")
-}

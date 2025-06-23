@@ -15,8 +15,8 @@ import (
 var offset int64 = 0
 var lastGetOffsetTime int64 = 0
 
-const baseUrl = "https://2000393909.api.ctwing.cn"
-const timeUrl = "https://2000393909.api.ctwing.cn/echo"
+const baseUrl = "https://2000018138.api.ctwing.cn"
+const timeUrl = "https://2000018138.api.ctwing.cn/echo"
 
 // 获取时间偏移量(毫秒)
 func getTimeOffset(url string) int64 {
